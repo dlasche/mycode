@@ -96,19 +96,44 @@ questions = [
     },
 ]
 
+# intro text
+input('''
+======================================================================================
+                Welcome to the "Find Your Moral Alignment" Quiz! There are 
+                ten questions that will be asked randomly. 
+                How you choose to act in each scenario determines your inner morality!
+                Would you like to get started?
+                (press any key to continue) :\n''')
+
+
 while len(questions_asked) <= 10:
     #get random question. make sure it is not equal to any previous question.
     
     if len(questions_asked) == 10:
         if morality <= 10:
-            print('Test completed. \n')
-            print('You Got: Neutral Evil \n You see others as a means to an end. You only make friends and allies temporarily, and will turn on someone in a second if you can see a way to gain from it. You don’t really go out of your way to cause harm to others, but you don\'t really go out of your way to prevent it either. \nPopular neutral evil characters:\nVoldemort from Harry Potter\nGaston from Beauty and the Beast\nLittlefinger from Game of Thrones')
+            print('\n Test completed. \n')
+            print('''You Got: Neutral Evil 
+You see others as a means to an end. You only make friends and allies temporarily, and will turn on someone in a second if you can see a way to gain from it. You don’t really go out of your way to cause harm to others, but you don\'t really go out of your way to prevent it either. 
+Popular neutral evil characters:
+Voldemort from Harry Potter
+Gaston from Beauty and the Beast
+Littlefinger from Game of Thrones''')
         elif morality <= 20:
             print('Test completed. \n')
-            print('You Got: True Neutral\nYou don’t feel strongly about much of anything. Frankly, you can take or leave a lot of things in your life. You’re mostly guided by instinct, rather than conscious decision.\nPopular true neutral characters:\nHawkeye from The Avengers\nHodor from Game of Thrones\nDoctor Manhattan from Watchmen')
+            print('''You Got: True Neutral
+You don’t feel strongly about much of anything. Frankly, you can take or leave a lot of things in your life. You’re mostly guided by instinct, rather than conscious decision.
+Popular true neutral characters:
+Hawkeye from The Avengers
+Hodor from Game of Thrones
+Doctor Manhattan from Watchmen''')
         else :
             print('Test completed. \n')
-            print('You Got: Neutral Good\nYou are guided by your conscience, rather than any formal laws or traditions. You may occasionally break the rules, but it’s generally in service of the greater good.\nPopular neutral good characters:\nJake the Dog from Adventure Time\nAlbus Dumbledore from Harry Potter\nGlenn from The Walking Dead')
+            print('''You Got: Neutral Good
+You are guided by your conscience, rather than any formal laws or traditions. You may occasionally break the rules, but it’s generally in service of the greater good.
+Popular neutral good characters:
+Jake the Dog from Adventure Time
+Albus Dumbledore from Harry Potter
+Glenn from The Walking Dead''')
         break
 
     #try except for input validation
@@ -129,6 +154,14 @@ while len(questions_asked) <= 10:
         if user_select < 1 or user_select > 3:
             raise ValueError('Your input should be 1, 2, or 3.') 
         questions_asked.append(questions[random_index])
+        if user_select == 1:
+            morality += int(questions[random_index]['1value'])
+        elif user_select == 2:
+            morality += int(questions[random_index]['2value'])
+        else:
+            morality += int(questions[random_index]['3value'])
+
+
     except:
         print("You must enter a whole number between 1 and 3.")
     
