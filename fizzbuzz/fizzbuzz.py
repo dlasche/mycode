@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-
-#FizzBuzz Challenge
-
-def main():
-    x = 0
+def fizzbuzz(x):
     while x < 100:
         x+=1
         if x%3 == 0 and x%5 == 0:
@@ -15,6 +10,9 @@ def main():
         else:
             print('Value of x is:', x)
 
+def main():
+    x = 0
+    fizzbuzz(x)
 
 if __name__ == '__main__':
     main()
