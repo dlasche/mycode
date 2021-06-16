@@ -2,9 +2,11 @@
 
 import requests
 
+URL = 'http://api.open-notify.org/astros.json'
+
 def astronauts():
 
-    r = requests.get('http://api.open-notify.org/astros.json').json()
+    r = requests.get(URL).json()
 
     print('People in Space:', r.get('number'))
     for astronaut in r.get('people'):
